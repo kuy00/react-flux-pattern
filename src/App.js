@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from 'react';
+import todoReducer from './reducers/todo';
+import AddTodo from './components/AddTodo';
+import DeleteTodo from './components/DeleteTodo';
+import TodoItem from './components/TodoItem';
+import todo from './constants/todoStatus';
 
 const App = () => {
+  const initialState = {
+    todos: [
+      {
+        id: 1,
+        name: '1일 1커밋',
+        status: todo.PROCESSING,
+      },
+    ],
+  };  
+  const [state, dispatch] = useReducer(todoReducer, initialState);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',          
+        }}>
+        {
+          state.todos.map((todo) => {
+            return (
+              <TodoItem key={todo.id} todo={todo} />
+            )
+          })
+        }
+      </div>
+      <div>
+        <AddTodo dispatch={dispatch} />
+        <DeleteTodo dispatch={dispatch} />
+      </div>      
     </div>
   );
 }
-
 export default App;
