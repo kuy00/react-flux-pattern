@@ -1,8 +1,6 @@
 const todo = (state, action) => {
   const { type, payload } = action;
 
-  console.log(type);
-
   switch (type) {
     case 'ADD_TODO':
       return {
@@ -16,7 +14,6 @@ const todo = (state, action) => {
       };
     case 'DELETE_TODO':
       state.todos.pop();
-      console.log(state.todos);
       return {
         ...state,
         todos: state.todos,
