@@ -1,11 +1,11 @@
-import { addTodo as actionAddTodo } from "../actions/todo";
+import { add as todoAddAction } from '../redux/modules/todo';
 import todo from '../constants/todoStatus';
 import { useDispatch } from 'react-redux';
 
 const AddTodo = () => {
   const dispatch = useDispatch();
   const addTodo = () => {
-    dispatch(actionAddTodo({
+    dispatch(todoAddAction({
       name: 'Flux 패턴 학습',
       status: todo.WAITING,
     }));

@@ -5,7 +5,7 @@ import TodoItem from './components/TodoItem';
 import { useSelector } from 'react-redux'
 
 const App = () => {
-  const state = useSelector(state => state.todoReducer);
+  const state = useSelector(state => state.todo);
 
   return (
     <div>

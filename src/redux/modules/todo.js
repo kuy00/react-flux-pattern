@@ -1,20 +1,35 @@
-import todoStatus from '../constants/todoStatus';
+import status from '../../constants/todoStatus';
 
+// Action Types
+const ADD = 'todo/ADD';
+const REMOVE = 'todo/REMOVE';
+
+// Action Creators
+export const add = (payload) => {
+  return { type: ADD, payload };
+};
+
+export const remove = () => {
+  return { type: REMOVE };
+};
+
+// Initial State
 const initialState = {
   todos: [
     {
       id: 1,
       name: '1일 1커밋',
-      status: todoStatus.PROCESSING,
+      status: status.PROCESSING,
     },
   ],
-};  
+};
 
-const todo = (state = initialState, action) => {
+// Reducer
+const reducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case 'ADD_TODO':
+    case ADD:
       return {
         ...state,
         todos: state.todos.concat(
@@ -24,7 +39,7 @@ const todo = (state = initialState, action) => {
           }
         ),
       };
-    case 'DELETE_TODO':
+    case REMOVE:
       state.todos.pop();
       return {
         ...state,
@@ -34,4 +49,4 @@ const todo = (state = initialState, action) => {
       return state;
   }
 }
-export default todo;
+export default reducer;

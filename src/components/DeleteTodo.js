@@ -1,10 +1,10 @@
-import { deleteTodo as actionDeleteTodo } from "../actions/todo";
+import { remove as todoRemoveAction } from '../redux/modules/todo';
 import { useDispatch } from 'react-redux';
 
 const DeleteTodo = () => {
   const dispatch = useDispatch();
   const deleteTodo = () => {
-    dispatch(actionDeleteTodo());
+    dispatch(todoRemoveAction());
   };
 
   return (
