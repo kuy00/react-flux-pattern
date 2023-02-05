@@ -1,21 +1,11 @@
-import React, { useReducer } from 'react';
-import todoReducer from './reducers/todo';
+import React from 'react';
 import AddTodo from './components/AddTodo';
 import DeleteTodo from './components/DeleteTodo';
 import TodoItem from './components/TodoItem';
-import todo from './constants/todoStatus';
+import { useSelector } from 'react-redux'
 
 const App = () => {
-  const initialState = {
-    todos: [
-      {
-        id: 1,
-        name: '1일 1커밋',
-        status: todo.PROCESSING,
-      },
-    ],
-  };  
-  const [state, dispatch] = useReducer(todoReducer, initialState);
+  const state = useSelector(state => state.todoReducer);
 
   return (
     <div>
@@ -33,8 +23,8 @@ const App = () => {
         }
       </div>
       <div>
-        <AddTodo dispatch={dispatch} />
-        <DeleteTodo dispatch={dispatch} />
+        <AddTodo />
+        <DeleteTodo />
       </div>      
     </div>
   );

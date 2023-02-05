@@ -1,7 +1,8 @@
 import { deleteTodo as actionDeleteTodo } from "../actions/todo";
+import { useDispatch } from 'react-redux';
 
-const DeleteTodo = (props) => {
-  const { dispatch } = props;
+const DeleteTodo = () => {
+  const dispatch = useDispatch();
   const deleteTodo = () => {
     dispatch(actionDeleteTodo());
   };

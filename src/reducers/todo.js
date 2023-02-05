@@ -1,4 +1,16 @@
-const todo = (state, action) => {
+import todoStatus from '../constants/todoStatus';
+
+const initialState = {
+  todos: [
+    {
+      id: 1,
+      name: '1일 1커밋',
+      status: todoStatus.PROCESSING,
+    },
+  ],
+};  
+
+const todo = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
